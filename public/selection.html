@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <title>Hypno AI - Your Online Tool for Self-Hypnotherapy</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+
+</head>
+
+<body>
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <p class="entertaining-text">Take a deep breath... Your personalized hypnosis experience is being prepared.</p>
+  </div>
+
+  <header class="header-area header-sticky mental-health-header wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <img src="assets/images/Logo-200.png" class="logo-image" alt="Hypno AI">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="http://hyppo.club" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#top">About</a></li>
+            </ul>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class='max-w-screen-2xl container pt-28 pb-6'>
+      <h5 class='pt-6 script-title'>The following is your script</h5>
+      <div id="gptResponseDisplay"></div>
+      <h5 class='pt-6'>Listen to your script</h5>
+      <audio id="audioPlayer" controls></audio>
+    </div>
+  </section>
+
+  <script>
+  // Debug flag to control logging
+  const debugMode = true;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const storedScript = sessionStorage.getItem('receivedScript');
+    const storedAudioData = sessionStorage.getItem('audioData'); // This is where you get the audio data
+
+    // Log stored data for debugging
+    if (debugMode) {
+      console.log("Stored Script: ", storedScript);
+      console.log("Stored Audio Data: ", storedAudioData);
+    }
+
+    // Existing logic for displaying the script
+    if (storedScript) {
+      const displayArea = document.getElementById('gptResponseDisplay');
+      if (displayArea) {
+        displayArea.textContent = storedScript;
+      } else {
+        if (debugMode) {
+          console.log("Display area not found");
+        }
+      }
+    }
+
+    // Now, for the audio data part
+    if (storedAudioData) {
+      const audioPlayer = document.getElementById('audioPlayer');
+      if (audioPlayer) {
+        audioPlayer.src = 'http://hyppoai.eastasia.cloudapp.azure.com:3000/audio-stream';
+      } else {
+        if (debugMode) {
+          console.log("Audio player element not found");
+        }
+      }
+    } else {
+      if (debugMode) {
+        console.log("Stored audio data not found");
+      }
+    }
+  });
+</script>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
